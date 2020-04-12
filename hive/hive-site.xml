@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+  <!-- one we created to enable/disable thrift serialization in the SerDe itself. this is for backward comptability -->
+  <property>
+    <name>hive.server2.thrift.resultset.serialize.in.tasks</name>
+    <value>true</value>
+  </property>
+  <!-- this is not the same fetch size as jdbc. this says what fetch size to use when filling the buffer in the serde. -->
+  <property>
+    <name>hive.server2.thrift.resultset.max.fetch.size</name>
+    <value>1000</value>
+  </property>
+  <!-- this is a metastore property. this needs to be set to true or metastore will not start on a fresh hive install -->
+  <property>
+    <name>datanucleus.autoCreateTables</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>local</value> 
+  </property>
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://HOSTNAME:9000</value>
+  </property>
+  <property>  
+    <name>hive.metastore.warehouse.dir</name>  
+    <value>/user/hive/warehouse</value>  
+  </property> 
+  <property>
+    <name>fs.file.impl.disable.cache</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.optimize.bucketmapjoin.sortedmerge</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.vectorized.execution.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.mapred.reduce.tasks.speculative.execution</name>
+    <value>false</value>
+  <property>
+    <name>hive.auto.convert.join.noconditionaltask</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.metastore.uris</name>
+    <value> </value>
+  </property>
+  <property>
+    <name>hive.metastore.execute.setugi</name>
+    <value>true</value>
+  </property>
+    <property>
+    <name>hive.metastore.client.socket.timeout</name>
+    <value>60</value>
+  </property>
+
+  <!-- use mysql -->
+  </property>
+    <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.jdbc.Driver</value>
+  </property>
+  <property>      
+   <name>javax.jdo.option.ConnectionPassword</name>      
+   <value>hive</value> 
+   <description>Enter your MySQL credentials. </description>
+  </property>
+
+  <property>
+    <name>hive.security.authorization.manager</name>         
+    <value>org.apache.hadoop.hive.ql.security.authorization.DefaultHiveAuthorizationProvider</value>
+  </property>
+
+  <property>
+    <name>hive.server2.webui.host</name>
+    <value>0.0.0.0</value>
+    <description>The host address the HiveServer2 WebUI will listen on</description>
+  </property>
+  <property>
+    <name>hive.server2.webui.port</name>
+    <value>10002</value>
+    <description>The port the HiveServer2 WebUI will listen on. This can beset to 0 or a negative integer to disable the web UI</description>
+  </property>
+
+</configuration>
+
