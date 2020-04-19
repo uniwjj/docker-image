@@ -14,8 +14,7 @@ RUN yum clean all && \
     chmod 0400 /root/.ssh/authorized_keys && \
     /usr/sbin/sshd-keygen || : && \
     yum install -y curl && \
-#    curl -s https://mirror.bit.edu.cn/apache/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz | \
-    curl http://192.168.0.2:6008/hadoop-$HADOOP_VERSION.tar.gz | \
+    curl -s https://mirror.bit.edu.cn/apache/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz | \
     tar -xz -C /usr/local && \
     cd /usr/local && \
     ln -s hadoop-$HADOOP_VERSION hadoop && \
