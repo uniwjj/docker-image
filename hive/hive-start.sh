@@ -2,11 +2,11 @@
 
 sed -i s/HOSTNAME/$HOSTNAME/g /usr/local/hive/conf/hive-site.xml
 
-# 启动MySQL
+# start mysql
 service mysqld start
-# 启动Hadoop
-/etc/bootstrap.sh
-# 启动Hive
+# start hadoop
+/root/hadoop-start.sh
+# start hive server
 hiveserver2
 
 if [[ $1 == "-d" ]]; then

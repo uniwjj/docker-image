@@ -8,21 +8,21 @@ LABEL Description="Hadoop $HADOOP_VERSION"
 
 RUN yum clean all && \
     rpm --rebuilddb &&  \
-    yum install -y which tar openssh-server openssh-clients && \
+    yum install -y initscripts which tar openssh-server openssh-clients && \
     ssh-keygen -t rsa -b 1024 -f /root/.ssh/id_rsa -N "" && \
     cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys && \
     chmod 0400 /root/.ssh/authorized_keys && \
     /usr/sbin/sshd-keygen || : && \
     yum install -y curl && \
 #    curl -s https://mirror.bit.edu.cn/apache/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz | \
-    curl http://10.242.212.68:6008/hadoop-$HADOOP_VERSION.tar.gz | \
+    curl http://192.168.0.2:6008/hadoop-$HADOOP_VERSION.tar.gz | \
     tar -xz -C /usr/local && \
     cd /usr/local && \
     ln -s hadoop-$HADOOP_VERSION hadoop && \
     rm -rf hadoop/share/doc && \
     hadoop/bin/hdfs namenode -format && \
-    yum autoremove -y && \
-    yum install -y hostname && \
+    # yum autoremove -y && \
+    # yum install -y hostname && \
     yum clean all && \
     rm -rf /var/cache/yum
 
@@ -50,4 +50,3 @@ EXPOSE 19888
 EXPOSE 8030 8031 8032 8033 8040 8042 8088
 
 CMD ["sh", "/root/hadoop-start.sh", "-d"]
-

@@ -2,7 +2,7 @@
 
 sed -i "s/HOSTNAME/$HOSTNAME/" /usr/local/hadoop/etc/hadoop/core-site.xml
 
-/usr/sbin/sshd
+service sshd start
 /usr/local/hadoop/sbin/start-dfs.sh
 /usr/local/hadoop/sbin/start-yarn.sh
 
@@ -13,4 +13,3 @@ fi
 if [[ $1 == "-bash" ]]; then
   /bin/bash
 fi
-

@@ -1,4 +1,4 @@
-FROM centos:centos7.7.1908
+FROM centos:centos6.10
 
 MAINTAINER ginger uniwjj@gmail.com
 
